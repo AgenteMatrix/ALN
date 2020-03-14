@@ -17,14 +17,14 @@ using M = vector<V>;
 //Tolerancia
 const double tol = 1e-12;
 
-//TRANSFORMACIONES Y OPERACIONES
+//TRANSFORMACIONES Y OPERACIONES CON V Y M
 int lu (M& A, VI& perm);
 int pivotage (M& A, int index);
 V resuelve (const M& A, const V& b);
-void Gauss (M& A, int row);
+void Gauss (M& A, int fila);
 M inversa (const M& A);
 double determinante (const M& A); 
-M multiplicar (const M& A, const M& B);
+M producto (const M& A, const M& B);
 M transforma (const V& b);
 M suma (const M& A, const M& B);
 M resta (const M& A, const M& B);

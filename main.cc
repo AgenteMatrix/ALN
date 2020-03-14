@@ -1,13 +1,6 @@
-#include<iostream> 
-#include<vector> 
-#include<fstream>	//Leer archivos de entrada
-#include<iomanip>	//Setprecision
+#include "funciones.h"
 
 using namespace std;
-
-//Simplificación del lenguaje y comprensión del código
-using V = vector<double>;
-using M = vector<V>;
 
 int main(int argc, char *argv[]) {
 

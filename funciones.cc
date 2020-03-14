@@ -160,6 +160,94 @@ double traza (const M& A) {
 	return res;
 }
 
+M producto (const M& A, const M& B) {
+	int n = A.size(), m = A[0].size();
+	int p = B.size(), q = B[0].size();
+
+	if(m != p) {
+		cout << "Error: las dimensiones no cuadran" << endl;
+		return A;
+	}
+
+	M res(n, V(q, 0));
+
+	for(int i = 0; i < n; ++i) {
+		for(int j = 0; j < q; ++j) {
+			for(int k = 0; k < m; ++k) res[i][j] += A[i][k]*B[k][j];
+		}
+	}
+
+	return res;
+}
+
+M suma (const M& A, const M& B) {
+	int n = A.size(), m = A[0].size();
+	int p = B.size(), q = B[0].size();
+
+	if(n != p or m != q) {
+		cout << "Error: las dimensiones no cuadran" << endl;
+		return A;
+	}
+
+	M res = A;
+
+	for(int i = 0; i < p; ++i) {
+		for(int j = 0; j < q; ++j) res[i][j] += B[i][j];
+	}
+	
+	return res;
+}
+
+M resta (const M& A, const M& B) {
+	int n = A.size(), m = A[0].size();
+	int p = B.size(), q = B[0].size();
+
+	if(n != p or m != q) {
+		cout << "Error: las dimensiones no cuadran" << endl;
+	}
+
+	M res = A;
+
+	for(int i = 0; i < p; ++i) {
+		for(int j = 0; j < q; ++j) res[i][j] -= B[i][j];
+	}
+
+	return res;
+}
+
+V suma_vectors (const V& u, const V& v) {
+	int n = u.size();
+	int m = v.size();
+
+	if(n != m) {
+		cout << "Error: las dimensiones no quadran" << endl;
+		return u;
+	}
+
+	V res(n, 0);
+	for(int i = 0; i < n; ++i) res[i] = u[i] + v[i];
+
+	return res;
+}
+
+//Dada una dimensión n, devuelve una matriz identidad de dim nxn.
+M identidad (int n) {
+	M res(n, V(n, 0));
+	for(int i = 0; i < n; ++i) res[i][i] = 1;
+	return res;
+}
+
+//Dado un vector b, lo expresa como vector columna.
+M transforma(const V& b) {
+	int n = b.size();
+
+	M res(n, V(1, 0));
+
+	for(int i = 0; i < n; ++i) res[i][0] = b[i];
+
+	return res;
+}
+
 ////*** [NORMAS VECTORES] *** ////
 
 
@@ -241,6 +329,20 @@ double norma_inf (const M& A) {
 	}
 
 	return res;
+}
+
+////*** [NÚMERO DE CONDICIÓN] *** ////
+
+double condicion_1 (const M& A) {
+	return norma_1(A)*norma_1(inversa(A));
+}
+
+double condicion_2 (const M& A) {
+	return norma_2(A)*norma_2(inversa(A));
+}
+
+double condicion_inf (const M& A) {
+	return norma_inf(A)*norma_inf(inversa(A));
 }
 
 

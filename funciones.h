@@ -5,8 +5,8 @@
 #include<vector>
 #include<fstream>	//Lee archivos de entrada, escribe archivos de salida
 #include<iomanip>	//Setprecision
-#include<math.h>
-#include<cstdlib>
+#include<math.h>	//Funciones matemáticas
+#include<cstdlib>	//Librería de utilidades
 
 using namespace std;
 
@@ -42,6 +42,11 @@ double norma_inf_vector (const V& b);
 double norma_1 (const M& A);
 double norma_2 (const M& A);
 double norma_inf (const M& A);
+
+//NÚMERO DE CONDICIÓN
+double condicion_1 (const M& A);
+double condicion_2 (const M& A);
+double condicion_inf (const M& A);
 
 //IMPRESIÓN
 void imprimir_matriz (const M& A);

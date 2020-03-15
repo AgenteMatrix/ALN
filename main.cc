@@ -6,9 +6,9 @@ int main(int argc, char *argv[]) {
 
 	//DETECCIÓN DE ERRORES EN LA ENTRADA
 
-	if(argc < 2) {
-		cerr << "Error: indica el fichero de los datos" << endl;
-		cerr << "Ejemplo de uso: ./main.exe DATA" << endl;
+	if(argc < 3) {
+		cerr << "Error: indica el fichero de los datos y el nombre del fichero de salida" << endl;
+		cerr << "Ejemplo de uso: ./main.exe DATA OUTPUT.txt" << endl;
 		exit(-1);
 	}
 
@@ -42,7 +42,9 @@ int main(int argc, char *argv[]) {
 
 	Datos.close();
 
-	//////  PROGRAMA  //////
+
+
+	/////////////////////////////////  PROGRAMA  /////////////////////////////////
 
 	V x(n, 0);
 	x = resuelve(A, b);
@@ -75,12 +77,15 @@ int main(int argc, char *argv[]) {
 	cout << "||Ax - b||_2 = " << norma_2_vector(r) << endl;
 	cout << "||Ax - b||_inf = " << norma_inf_vector(r) << endl;
 
+	/////////////////////////////////  PROGRAMA  /////////////////////////////////
+
+
 
 	//Declaramos Resultados como un objeto de la classe ofstream.
 	ofstream Resultados;
 
 	//Abrimos el fichero para escribir.
-	Resultados.open("output.txt", ofstream::out);
+	Resultados.open(argv[2], ofstream::out);
 
 	//Comprovacion que se ha podido abrir el fichero.
 	if(Resultados.fail()) {

@@ -23,6 +23,12 @@ int pivotage (M& A, int index);
 V resuelve (const M& A, const V& b);
 void Gauss (M& A, int fila);
 M inversa (const M& A);
+
+// Calcula r = Ax - b.
+V calculo_res (M& A, V& x, V& b);
+// Calcula PA
+M calculo_PA (M& A, VI& perm);
+
 double determinante (const M& A); 
 M producto (const M& A, const M& B);
 M transforma (const V& b);
@@ -30,6 +36,7 @@ M suma (const M& A, const M& B);
 M resta (const M& A, const M& B);
 M transpuesta (const M& A);
 V suma_vectores (const V& u, const V& v);
+V resta_vectores (const V& u, const V& v);
 double traza (const M& A);
 M identidad (int n);
 

@@ -89,7 +89,7 @@ V resuelve (const M& A, const V& b) {
 
 	//Ux = y
 	for(int i = n-1; i >= 0; --i) {
-		for(int j = n-1; j > i; ++j) {
+		for(int j = n-1; j > i; --j) {
 			x[i] -= x[j]*LU[i][j];
 		}
 		x[i] /= LU[i][i];
@@ -106,7 +106,7 @@ M inversa (const M& A) {
 	int n_singular = lu(LU, perm);
 
 	if(not n_singular) {
-		cout << "Error: La matriz es singular, no tiene inversa" << endl;
+		cerr << "Error: La matriz es singular, no tiene inversa" << endl;
 		return A;
 	}
 
@@ -165,7 +165,7 @@ M producto (const M& A, const M& B) {
 	int p = B.size(), q = B[0].size();
 
 	if(m != p) {
-		cout << "Error: las dimensiones no cuadran" << endl;
+		cerr << "Error: las dimensiones no cuadran" << endl;
 		return A;
 	}
 
@@ -185,7 +185,7 @@ M suma (const M& A, const M& B) {
 	int p = B.size(), q = B[0].size();
 
 	if(n != p or m != q) {
-		cout << "Error: las dimensiones no cuadran" << endl;
+		cerr << "Error: las dimensiones no cuadran" << endl;
 		return A;
 	}
 
@@ -203,7 +203,7 @@ M resta (const M& A, const M& B) {
 	int p = B.size(), q = B[0].size();
 
 	if(n != p or m != q) {
-		cout << "Error: las dimensiones no cuadran" << endl;
+		cerr << "Error: las dimensiones no cuadran" << endl;
 	}
 
 	M res = A;
@@ -215,17 +215,32 @@ M resta (const M& A, const M& B) {
 	return res;
 }
 
-V suma_vectors (const V& u, const V& v) {
+V suma_vectores (const V& u, const V& v) {
 	int n = u.size();
 	int m = v.size();
 
 	if(n != m) {
-		cout << "Error: las dimensiones no quadran" << endl;
+		cerr << "Error: las dimensiones no quadran" << endl;
 		return u;
 	}
 
 	V res(n, 0);
 	for(int i = 0; i < n; ++i) res[i] = u[i] + v[i];
+
+	return res;
+}
+
+V resta_vectores (const V& u, const V& v) {
+	int n = u.size();
+	int m = v.size();
+
+	if(n != m) {
+		cerr << "Error: las dimensiones no quadran" << endl;
+		return u;
+	}
+
+	V res(n, 0);
+	for(int i = 0; i < n; ++i) res[i] = u[i] - v[i];
 
 	return res;
 }
@@ -246,6 +261,49 @@ M transforma(const V& b) {
 	for(int i = 0; i < n; ++i) res[i][0] = b[i];
 
 	return res;
+}
+
+V calculo_res (M& A, V& x, V& b) {
+	int n = A.size();
+	int m = A[0].size();
+
+	if(m != (int) x.size()) {
+		cerr << "Error: las dimensiones no cuadran" << endl;
+		return x;
+	}
+
+	if(n != (int) b.size()) {
+		cerr << "Error: las dimensiones no cuadran" << endl;
+		return x;
+	}
+
+	V r(n);
+
+	for(int i = 0; i < n; ++i) {
+		r[i] = -b[i];
+		for(int j = 0; j < n; ++j) r[i] += A[i][j]*x[j];
+	}
+
+	return r;
+
+}
+
+M calculo_PA (M& A, VI& perm) {
+	int n = A.size();
+	int m = A[0].size();
+
+	if(n != (int) perm.size()) {
+		cerr << "Error: las dimensiones no cuadran" << endl;
+		return A;
+	}
+
+	M PA(n, V(m));
+
+	for(int i = 0; i < n; ++i) {
+		PA[i] = A[perm[i]];
+	}
+
+	return PA;
 }
 
 ////*** [NORMAS VECTORES] *** ////

@@ -4,6 +4,8 @@ all: exLU
 
 clean:
 	rm -f exLU *.o *.txt
+run:
+	./exLU M01.DAT output.txt
 
 exLU: main.o funciones.o
 	$(CXX) $^ -o $@

@@ -12,9 +12,7 @@ int lu (M&A, VI& perm) {
 	for(int i = 0; i < n; ++i) perm[i] = i;
 
 	for(int i = 0; i < n - 1; ++i) {
-		//Hacemos el pivotage
 		int pivote = pivotage(A, i);
-		//Permutamos filas
 		if(pivote != i) {
 			swap(A[i], A[pivote]);
 			swap(perm[i], perm[pivote]);
@@ -25,9 +23,7 @@ int lu (M&A, VI& perm) {
 		Gauss(A, i);
 	}
 
-	//OJO: MIRAR SI FUNCIONA return 2*((p+1)%2)-1;
-	if(p%2 == 0) return 1;
-	return -1;
+	return 2*((p+1)%2)-1;
 }
 
 //Completa el paso i-ésimo del método de Gauss.
@@ -106,7 +102,9 @@ M inversa (const M& A) {
 	int n_singular = lu(LU, perm);
 
 	if(not n_singular) {
-		cerr << "Error: La matriz es singular, no tiene inversa" << endl;
+		cerr << "----------------------------------------------" << endl;
+		cerr << "Error: La matriz es singular, no tiene inversa." << endl;
+		cerr << "----------------------------------------------" << endl;
 		return A;
 	}
 
@@ -145,7 +143,7 @@ double determinante (const M& A) {
 	M LU = A;
 
 	double res = lu(LU, perm);
-	for(int i = 0; i < n; ++i) res += LU[i][i];
+	for(int i = 0; i < n; ++i) res *= LU[i][i];
 
 	return res;
 }
@@ -165,7 +163,9 @@ M producto (const M& A, const M& B) {
 	int p = B.size(), q = B[0].size();
 
 	if(m != p) {
-		cerr << "Error: las dimensiones no cuadran" << endl;
+		cerr << "------------------------------------------" << endl;
+		cerr << "Error producto: las dimensiones no cuadran" << endl;
+		cerr << "------------------------------------------" << endl;
 		return A;
 	}
 
@@ -185,7 +185,9 @@ M suma (const M& A, const M& B) {
 	int p = B.size(), q = B[0].size();
 
 	if(n != p or m != q) {
-		cerr << "Error: las dimensiones no cuadran" << endl;
+		cerr << "--------------------------------------" << endl;
+		cerr << "Error suma: las dimensiones no cuadran" << endl;
+		cerr << "--------------------------------------" << endl;
 		return A;
 	}
 
@@ -203,7 +205,9 @@ M resta (const M& A, const M& B) {
 	int p = B.size(), q = B[0].size();
 
 	if(n != p or m != q) {
-		cerr << "Error: las dimensiones no cuadran" << endl;
+		cerr << "---------------------------------------" << endl;
+		cerr << "Error resta: las dimensiones no cuadran" << endl;
+		cerr << "---------------------------------------" << endl;
 	}
 
 	M res = A;
@@ -220,7 +224,9 @@ V suma_vectores (const V& u, const V& v) {
 	int m = v.size();
 
 	if(n != m) {
-		cerr << "Error: las dimensiones no quadran" << endl;
+		cerr << "-----------------------------------------------" << endl;
+		cerr << "Error suma_vectores: las dimensiones no quadran" << endl;
+		cerr << "-----------------------------------------------" << endl;
 		return u;
 	}
 
@@ -235,7 +241,9 @@ V resta_vectores (const V& u, const V& v) {
 	int m = v.size();
 
 	if(n != m) {
-		cerr << "Error: las dimensiones no quadran" << endl;
+		cerr << "------------------------------------------------" << endl;
+		cerr << "Error resta_vectores: las dimensiones no quadran" << endl;
+		cerr << "------------------------------------------------" << endl;
 		return u;
 	}
 
@@ -412,7 +420,7 @@ void imprimir_matriz (const M& A) {
 
 	for(int i = 0; i < n; ++i) {
 		for(int j = 0; j < m; ++j) {
-			cout << A[i][j] << ' ';
+			cout << setw(15) << A[i][j] << ' ';
 		}
 		cout << endl;
 	}

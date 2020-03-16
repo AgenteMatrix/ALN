@@ -58,6 +58,9 @@ int main(int argc, char *argv[]) {
 
 	M PA(n, V(n));
 
+	inversa(A);
+
+	cout << scientific << setprecision(15);
 
 	cout << "Dim del sistema: " << n << endl << endl;
 
@@ -100,4 +103,4 @@ int main(int argc, char *argv[]) {
 	for(int i = 0; i < n; ++i) Resultados << setw(4) << i << setw(24) << x[i] << endl;
 	//Cerramos el fichero con los resultados.
 	Resultados.close();
-}
+}	

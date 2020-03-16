@@ -54,13 +54,20 @@ int main(int argc, char *argv[]) {
 	lu(LU, perm);
 
 	V r(n, 0);
+
 	r = calculo_res(A, x, b);
 
-	M PA(n, V(n));
+	M a = calculo_PA(A, perm);
+	imprimir_matriz(a);
+	cout << endl << "PA - LU" << endl << endl;
+	imprimir_matriz(LU);
+	cout << endl << "Resta" << endl << endl;
+	M R = resta(a, LU);
 
-	inversa(A);
+	imprimir_matriz(R);
 
-	cout << scientific << setprecision(15);
+	//scientific
+	cout << setprecision(15);
 
 	cout << "Dim del sistema: " << n << endl << endl;
 
@@ -97,7 +104,8 @@ int main(int argc, char *argv[]) {
 	}
 
 	//Precisión en los resultados.
-	Resultados << scientific << setprecision(15);
+	//scientific
+	Resultados << setprecision(15);
 
 	//Salida de resultados con 'Resultados >> *'.
 	for(int i = 0; i < n; ++i) Resultados << setw(4) << i << setw(24) << x[i] << endl;

@@ -276,12 +276,16 @@ V calculo_res (M& A, V& x, V& b) {
 	int m = A[0].size();
 
 	if(m != (int) x.size()) {
-		cerr << "Error: las dimensiones no cuadran" << endl;
+		cerr << "---------------------------------------------" << endl;
+		cerr << "Error calculo_res: las dimensiones no cuadran" << endl;
+		cerr << "---------------------------------------------" << endl;
 		return x;
 	}
 
 	if(n != (int) b.size()) {
-		cerr << "Error: las dimensiones no cuadran" << endl;
+		cerr << "---------------------------------------------" << endl;
+		cerr << "Error calculo_res: las dimensiones no cuadran" << endl;
+		cerr << "---------------------------------------------" << endl;
 		return x;
 	}
 
@@ -301,7 +305,9 @@ M calculo_PA (M& A, VI& perm) {
 	int m = A[0].size();
 
 	if(n != (int) perm.size()) {
-		cerr << "Error: las dimensiones no cuadran" << endl;
+		cerr << "--------------------------------------------" << endl;
+		cerr << "Error calculo_PA: las dimensiones no cuadran" << endl;
+		cerr << "--------------------------------------------" << endl;
 		return A;
 	}
 

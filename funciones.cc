@@ -158,6 +158,7 @@ double traza (const M& A) {
 	return res;
 }
 
+//Dadas una matriz A y B, calcula su producto.
 M producto (const M& A, const M& B) {
 	int n = A.size(), m = A[0].size();
 	int p = B.size(), q = B[0].size();
@@ -180,6 +181,7 @@ M producto (const M& A, const M& B) {
 	return res;
 }
 
+//Dadas una matriz A y B, calcula su suma.
 M suma (const M& A, const M& B) {
 	int n = A.size(), m = A[0].size();
 	int p = B.size(), q = B[0].size();
@@ -200,6 +202,7 @@ M suma (const M& A, const M& B) {
 	return res;
 }
 
+//Dadas una matriz A y B, calcula su resta.
 M resta (const M& A, const M& B) {
 	int n = A.size(), m = A[0].size();
 	int p = B.size(), q = B[0].size();
@@ -219,6 +222,7 @@ M resta (const M& A, const M& B) {
 	return res;
 }
 
+//Dados unos vectores u y v, calcula su suma.
 V suma_vectores (const V& u, const V& v) {
 	int n = u.size();
 	int m = v.size();
@@ -236,6 +240,7 @@ V suma_vectores (const V& u, const V& v) {
 	return res;
 }
 
+//Dados unos vectores u y v, calcula su resta.
 V resta_vectores (const V& u, const V& v) {
 	int n = u.size();
 	int m = v.size();
@@ -260,17 +265,7 @@ M identidad (int n) {
 	return res;
 }
 
-//Dado un vector b, lo expresa como vector columna.
-M transforma(const V& b) {
-	int n = b.size();
-
-	M res(n, V(1, 0));
-
-	for(int i = 0; i < n; ++i) res[i][0] = b[i];
-
-	return res;
-}
-
+//Devuelve r = Ax - b.
 V calculo_res (M& A, V& x, V& b) {
 	int n = A.size();
 	int m = A[0].size();
@@ -300,6 +295,7 @@ V calculo_res (M& A, V& x, V& b) {
 
 }
 
+//Devuelve la matriz P*A.
 M calculo_PA (M& A, VI& perm) {
 	int n = A.size();
 	int m = A[0].size();
@@ -321,7 +317,6 @@ M calculo_PA (M& A, VI& perm) {
 }
 
 ////*** [NORMAS VECTORES] *** ////
-
 
 double norma_1_vector (const V& b) {
 	int n = b.size();
@@ -364,25 +359,10 @@ double norma_1 (const M& A) {
 	double res = 0;
 
 	for(int i = 0; i < n; ++i) {
-		double c = 0;
-		for(int j = 0; j < m; ++j) c += abs(A[j][i]);
+		double actual = 0;
+		for(int j = 0; j < m; ++j) actual += abs(A[j][i]);
 
-		res = max(res, c);
-	}
-
-	return res;
-}
-
-double norma_2 (const M& A) {
-	int n = A.size();
-	int m = A[0].size();
-	double res = 0;
-
-	for(int i = 0; i < n; ++i) {
-		double c = 0;
-		for(int j = 0; j < m; ++j) c += A[j][i]*A[j][i];
-
-		res = max(res, sqrt(c));
+		res = max(res, actual);
 	}
 
 	return res;
@@ -394,32 +374,18 @@ double norma_inf (const M& A) {
 	double res = 0;
 
 	for(int i = 0; i < n; ++i) {
-		double f = 0;
-		for(int j = 0; j < m; ++j) f += abs(A[i][j]);
+		double actual = 0;
+		for(int j = 0; j < m; ++j) actual += abs(A[i][j]);
 
-		res = max(res, f);
+		res = max(res, actual);
 	}
 
 	return res;
 }
 
-////*** [NÚMERO DE CONDICIÓN] *** ////
-
-double condicion_1 (const M& A) {
-	return norma_1(A)*norma_1(inversa(A));
-}
-
-double condicion_2 (const M& A) {
-	return norma_2(A)*norma_2(inversa(A));
-}
-
-double condicion_inf (const M& A) {
-	return norma_inf(A)*norma_inf(inversa(A));
-}
-
-
 ////*** [IMPRESIÓN] *** ////
 
+//Dada una matriz A, la imprime por terminal.
 void imprimir_matriz (const M& A) {
 	int n = A.size();
 	int m = A[0].size();

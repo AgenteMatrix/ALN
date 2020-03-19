@@ -4,21 +4,15 @@ using namespace std;
 
 int main(int argc, char *argv[]) {
 
-	//DETECCIÓN DE ERRORES EN LA ENTRADA
-
 	if(argc < 3) {
 		cerr << "Error: indica el fichero de los datos y el nombre del fichero de salida" << endl;
 		cerr << "Ejemplo de uso: ./main.exe DATA OUTPUT.txt" << endl;
 		exit(-1);
 	}
 
-	//Declaración Datos como un objeto de la clase ifstream.
 	ifstream Datos;
-
-	//Abrimos el archivo para leerlo.
 	Datos.open(argv[1], ifstream::in);
 
-	//Comprovacion de que se ha podido abrir el fichero
 	if(Datos.fail()) {
 		cerr << "Error: no se ha podido abrir el fichero de datos" << endl;
 		exit(-1);
@@ -31,7 +25,6 @@ int main(int argc, char *argv[]) {
 	int n, m, i, j;
 	Datos >> n >> m;
 
-	//Declaración de la matriz A y el vector b.
 	M A(n, V(n, 0));
 	V b(n, 0);
 
@@ -42,9 +35,7 @@ int main(int argc, char *argv[]) {
 
 	Datos.close();
 
-
-
-	/////////////////////////////////  PROGRAMA  /////////////////////////////////
+	////////////////////////////*** [ PROGRAMA ] ***/////////////////////////////
 
 	V x(n, 0);
 	x = resuelve(A, b);
@@ -57,23 +48,12 @@ int main(int argc, char *argv[]) {
 
 	r = calculo_res(A, x, b);
 
-	M a = calculo_PA(A, perm);
-	imprimir_matriz(a);
-	cout << endl << "PA - LU" << endl << endl;
-	imprimir_matriz(LU);
-	cout << endl << "Resta" << endl << endl;
-	M R = resta(a, LU);
-
-	imprimir_matriz(R);
-
-	//scientific
-	cout << setprecision(15);
+	cout << scientific << setprecision(15);
 
 	cout << "Dim del sistema: " << n << endl << endl;
 
 	cout << "[Estimación del error en la descomposicón PA = LU]" << endl;
 	cout << "||PA - LU||_1 = " << norma_1(resta(calculo_PA(A, perm), LU)) << endl;
-	cout << "||PA - LU||_2 = " << norma_2(resta(calculo_PA(A, perm), LU)) << endl;
 	cout << "||PA - LU||_inf = " << norma_inf(resta(calculo_PA(A, perm), LU)) << endl << endl;
 
 	cout << "El vector de permutaciones es: ( ";
@@ -87,28 +67,20 @@ int main(int argc, char *argv[]) {
 	cout << "||Ax - b||_2 = " << norma_2_vector(r) << endl;
 	cout << "||Ax - b||_inf = " << norma_inf_vector(r) << endl;
 
-	/////////////////////////////////  PROGRAMA  /////////////////////////////////
+	////////////////////////////*** [ PROGRAMA ] ***/////////////////////////////
 
 
-
-	//Declaramos Resultados como un objeto de la classe ofstream.
 	ofstream Resultados;
-
-	//Abrimos el fichero para escribir.
 	Resultados.open(argv[2], ofstream::out);
 
-	//Comprovacion que se ha podido abrir el fichero.
 	if(Resultados.fail()) {
 		cerr << "Error: no se ha podido abrir el fichero de reultados" << endl;
 		exit(-1);
 	}
 
-	//Precisión en los resultados.
-	//scientific
-	Resultados << setprecision(15);
+	Resultados << scientific << setprecision(15);
 
-	//Salida de resultados con 'Resultados >> *'.
 	for(int i = 0; i < n; ++i) Resultados << setw(4) << i << setw(24) << x[i] << endl;
-	//Cerramos el fichero con los resultados.
+
 	Resultados.close();
 }	

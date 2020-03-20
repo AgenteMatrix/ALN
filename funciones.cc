@@ -2,7 +2,7 @@
 
 using namespace std;
 
-////*** [TRANSFORMACIONES Y OPERACIONES CON V Y M] *** ////
+////*** [ TRANSFORMACIONES Y OPERACIONES CON V Y M ] ***////
 
 //Descomposición PA = LU.
 int lu (M&A, VI& perm) {
@@ -18,6 +18,7 @@ int lu (M&A, VI& perm) {
 			swap(perm[i], perm[pivote]);
 			++p;
 		}
+
 		if(abs(A[i][i]) < tol) return 0;
 
 		Gauss(A, i);
@@ -102,7 +103,7 @@ M inversa (const M& A) {
 	int n_singular = lu(LU, perm);
 
 	if(not n_singular) {
-		cerr << "----------------------------------------------" << endl;
+		cerr << endl << "----------------------------------------------" << endl;
 		cerr << "Error: La matriz es singular, no tiene inversa." << endl;
 		cerr << "----------------------------------------------" << endl;
 		return A;
@@ -112,7 +113,7 @@ M inversa (const M& A) {
 
 	for(int i = 0; i < n; ++i) {
 		V e(n, 0);
-		e[i] = 1;
+		e[i] = 1.0;
 		Inv[i] = resuelve(A, e);
 	}
 
@@ -164,7 +165,7 @@ M producto (const M& A, const M& B) {
 	int p = B.size(), q = B[0].size();
 
 	if(m != p) {
-		cerr << "------------------------------------------" << endl;
+		cerr << endl << "------------------------------------------" << endl;
 		cerr << "Error producto: las dimensiones no cuadran" << endl;
 		cerr << "------------------------------------------" << endl;
 		return A;
@@ -187,7 +188,7 @@ M suma (const M& A, const M& B) {
 	int p = B.size(), q = B[0].size();
 
 	if(n != p or m != q) {
-		cerr << "--------------------------------------" << endl;
+		cerr << endl << "--------------------------------------" << endl;
 		cerr << "Error suma: las dimensiones no cuadran" << endl;
 		cerr << "--------------------------------------" << endl;
 		return A;
@@ -208,7 +209,7 @@ M resta (const M& A, const M& B) {
 	int p = B.size(), q = B[0].size();
 
 	if(n != p or m != q) {
-		cerr << "---------------------------------------" << endl;
+		cerr << endl << "---------------------------------------" << endl;
 		cerr << "Error resta: las dimensiones no cuadran" << endl;
 		cerr << "---------------------------------------" << endl;
 	}
@@ -228,7 +229,7 @@ V suma_vectores (const V& u, const V& v) {
 	int m = v.size();
 
 	if(n != m) {
-		cerr << "-----------------------------------------------" << endl;
+		cerr << endl << "-----------------------------------------------" << endl;
 		cerr << "Error suma_vectores: las dimensiones no quadran" << endl;
 		cerr << "-----------------------------------------------" << endl;
 		return u;
@@ -246,7 +247,7 @@ V resta_vectores (const V& u, const V& v) {
 	int m = v.size();
 
 	if(n != m) {
-		cerr << "------------------------------------------------" << endl;
+		cerr << endl << "------------------------------------------------" << endl;
 		cerr << "Error resta_vectores: las dimensiones no quadran" << endl;
 		cerr << "------------------------------------------------" << endl;
 		return u;
@@ -261,7 +262,7 @@ V resta_vectores (const V& u, const V& v) {
 //Dada una dimensión n, devuelve una matriz identidad de dim nxn.
 M identidad (int n) {
 	M res(n, V(n, 0));
-	for(int i = 0; i < n; ++i) res[i][i] = 1;
+	for(int i = 0; i < n; ++i) res[i][i] = 1.0;
 	return res;
 }
 
@@ -271,14 +272,14 @@ V calculo_res (M& A, V& x, V& b) {
 	int m = A[0].size();
 
 	if(m != (int) x.size()) {
-		cerr << "---------------------------------------------" << endl;
+		cerr << endl << "---------------------------------------------" << endl;
 		cerr << "Error calculo_res: las dimensiones no cuadran" << endl;
 		cerr << "---------------------------------------------" << endl;
 		return x;
 	}
 
 	if(n != (int) b.size()) {
-		cerr << "---------------------------------------------" << endl;
+		cerr << endl << "---------------------------------------------" << endl;
 		cerr << "Error calculo_res: las dimensiones no cuadran" << endl;
 		cerr << "---------------------------------------------" << endl;
 		return x;
@@ -301,7 +302,7 @@ M calculo_PA (M& A, VI& perm) {
 	int m = A[0].size();
 
 	if(n != (int) perm.size()) {
-		cerr << "--------------------------------------------" << endl;
+		cerr << endl << "--------------------------------------------" << endl;
 		cerr << "Error calculo_PA: las dimensiones no cuadran" << endl;
 		cerr << "--------------------------------------------" << endl;
 		return A;
@@ -328,14 +329,14 @@ M calculo_LU (M& A) {
 				L[i][j] = A[i][j];
 				A[i][j] = 0;
 			}
-			if(i == j) L[i][j] = 1;
+			if(i == j) L[i][j] = 1.0;
 		}
 	}
 
 	return L;
 }
 
-////*** [NORMAS VECTORES] *** ////
+////*** [ NORMAS VECTORES ] ***////
 
 double norma_1_vector (const V& b) {
 	int n = b.size();
@@ -370,7 +371,7 @@ double norma_inf_vector (const V& b) {
 	return abs(b[index]);
 }
 
-////*** [NORMAS MATRICES] *** ////
+////*** [ NORMAS MATRICES ] ***////
 
 double norma_1 (const M& A) {
 	int n = A.size();
@@ -402,7 +403,7 @@ double norma_inf (const M& A) {
 	return res;
 }
 
-////*** [IMPRESIÓN] *** ////
+////*** [ IMPRESIÓN ] ***////
 
 //Dada una matriz A, la imprime por terminal.
 void imprimir_matriz (const M& A) {

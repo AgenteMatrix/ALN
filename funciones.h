@@ -14,10 +14,10 @@ using V = vector<double>;
 using VI = vector<int>;
 using M = vector<V>;
 
-//Tolerancia
+////*** [ Tolerancia ] ****////
 const double tol = 1e-12;
 
-////*** [TRANSFORMACIONES Y OPERACIONES CON V Y M] *** ////
+////*** [ TRANSFORMACIONES Y OPERACIONES CON V Y M ] ***////
 
 int lu (M& A, VI& perm);
 int pivotage (M& A, int index);
@@ -37,18 +37,18 @@ M inversa (const M& A);
 M transpuesta (const M& A);
 M identidad (int n);
 
-////*** [NORMAS VECTORES] *** ////
+////*** [ NORMAS VECTORES ] ***////
 
 double norma_1_vector (const V& b);
 double norma_2_vector (const V& b);
 double norma_inf_vector (const V& b);
 
-////*** [NORMAS MATRICES] *** ////
+////*** [ NORMAS MATRICES ] ***////
 
 double norma_1 (const M& A);
 double norma_inf (const M& A);
 
-////*** [IMPRESIÓN] *** ////
+////*** [ IMPRESIÓN ] ***////
 
 void imprimir_matriz (const M& A);
 void imprimir_matlab (const M& A);

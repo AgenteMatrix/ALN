@@ -5,18 +5,22 @@ using namespace std;
 int main(int argc, char *argv[]) {
 
 	if(argc < 3) {
+		cerr << endl << "-----------------------------------------------------------------------" << endl;
 		cerr << "Error: indica el fichero de los datos y el nombre del fichero de salida" << endl;
 		cerr << "Ejemplo de uso: ./main.exe DATA OUTPUT.txt" << endl;
+		cerr << "-----------------------------------------------------------------------" << endl;
 		exit(-1);
 	}
 
-	////////////////////////*** [LECTURA DE DATOS] ***////////////////////////
+	////////////////////////*** [ LECTURA DE DATOS ] ***////////////////////////
 
 	ifstream Datos;
 	Datos.open(argv[1], ifstream::in);
 
 	if(Datos.fail()) {
+		cerr << endl << "------------------------------------------------" << endl;
 		cerr << "Error: no se ha podido abrir el fichero de datos" << endl;
+		cerr << "------------------------------------------------" << endl;
 		exit(-1);
 	}
 
@@ -36,7 +40,7 @@ int main(int argc, char *argv[]) {
 	Datos.close();
 
 	////////////////////////////*** [ BEGIN PROGRAMA ] ***/////////////////////////////
-	
+
 	//Vector de soluciones x
 	V x(n, 0);
 	x = resuelve(A, b);
@@ -78,13 +82,15 @@ int main(int argc, char *argv[]) {
 	////////////////////////////*** [ END PROGRAMA ] ***/////////////////////////////
 
 
-	////////////////////////////*** [SALIDA DE DATOS] ***////////////////////////////
+	////////////////////////////*** [ SALIDA DE DATOS ] ***////////////////////////////
 
 	ofstream Resultados;
 	Resultados.open(argv[2], ofstream::out);
 
 	if(Resultados.fail()) {
+		cerr << endl << "----------------------------------------------------" << endl;
 		cerr << "Error: no se ha podido abrir el fichero de reultados" << endl;
+		cerr << "----------------------------------------------------" << endl;
 		exit(-1);
 	}
 

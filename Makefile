@@ -6,7 +6,7 @@ clean:
 	rm -f exLU *.o *.txt
 run:
 	 @while [ -z "$$nombre" ]; do \
-		read -r -p "Introduce el nombre de los datos: " nombre; \
+		read -r -p "Introduce el archivo de datos: " nombre; \
 	done; \
 	./exLU "$$nombre" output.txt
 

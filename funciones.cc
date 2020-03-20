@@ -316,6 +316,25 @@ M calculo_PA (M& A, VI& perm) {
 	return PA;
 }
 
+//Dada una descomposición LU, devuelve la matriz L y por referencia la matriz U.
+M calculo_LU (M& A) {
+	int n = A.size();
+
+	M L(n, V(n, 0));
+
+	for(int i = 0; i < n; ++i) {
+		for(int j = 0; j < n; ++j) {
+			if(j < i) {
+				L[i][j] = A[i][j];
+				A[i][j] = 0;
+			}
+			if(i == j) L[i][j] = 1;
+		}
+	}
+
+	return L;
+}
+
 ////*** [NORMAS VECTORES] *** ////
 
 double norma_1_vector (const V& b) {

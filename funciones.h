@@ -25,6 +25,7 @@ V resuelve (const M& A, const V& b);
 void Gauss (M& A, int fila);
 V calculo_res (M& A, V& x, V& b);
 M calculo_PA (M& A, VI& perm);
+M calculo_LU (M& A);
 double determinante (const M& A); 
 double traza (const M& A);
 M suma (const M& A, const M& B);

@@ -37,25 +37,31 @@ int main(int argc, char *argv[]) {
 
 	////////////////////////////*** [ PROGRAMA ] ***/////////////////////////////
 	
-
+	//Vector de soluciones x
 	V x(n, 0);
 	x = resuelve(A, b);
 
+	//Matriz de la descomposición LU y el vector de permutaciones.
 	M LU = A;
 	VI perm(n, 0);
 	lu(LU, perm);
 
-	V r(n, 0);
+	//Matriz U y L de la descomposición.
+	M U = LU;
+	M L = calculo_LU(U);
 
+	//Vector residuo.
+	V r(n, 0);
 	r = calculo_res(A, x, b);
 
+	//OUTPUT.
 	cout << scientific << setprecision(15);
 
 	cout << "Dim del sistema: " << n << endl << endl;
 
 	cout << "[Estimación del error en la descomposicón PA = LU]" << endl;
-	cout << "||PA - LU||_1 = " << norma_1(resta(calculo_PA(A, perm), LU)) << endl;
-	cout << "||PA - LU||_inf = " << norma_inf(resta(calculo_PA(A, perm), LU)) << endl << endl;
+	cout << "||PA - LU||_1 = " << norma_1(resta(calculo_PA(A, perm), producto(L, U))) << endl;
+	cout << "||PA - LU||_inf = " << norma_inf(resta(calculo_PA(A, perm), producto(L, U))) << endl << endl;
 
 	cout << "El vector de permutaciones es: ( ";
 	for(int i : perm) cout << i << ' ';

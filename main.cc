@@ -10,7 +10,7 @@ int main(int argc, char *argv[]) {
 		exit(-1);
 	}
 
-	////*** [LECTURA DE DATOS] *** ////
+	////////////////////////*** [LECTURA DE DATOS] ***////////////////////////
 
 	ifstream Datos;
 	Datos.open(argv[1], ifstream::in);
@@ -35,7 +35,7 @@ int main(int argc, char *argv[]) {
 
 	Datos.close();
 
-	////////////////////////////*** [ PROGRAMA ] ***/////////////////////////////
+	////////////////////////////*** [ BEGIN PROGRAMA ] ***/////////////////////////////
 	
 	//Vector de soluciones x
 	V x(n, 0);
@@ -57,28 +57,28 @@ int main(int argc, char *argv[]) {
 	//OUTPUT.
 	cout << scientific << setprecision(15);
 
-	cout << "Dim del sistema: " << n << endl << endl;
+	cout << endl << "Dim del sistema: " << n << endl << endl;
 
-	cout << "[Estimación del error en la descomposicón PA = LU]" << endl;
-	cout << "||PA - LU||_1 = " << norma_1(resta(calculo_PA(A, perm), producto(L, U))) << endl;
-	cout << "||PA - LU||_inf = " << norma_inf(resta(calculo_PA(A, perm), producto(L, U))) << endl << endl;
+	cout << "Det A = " << determinante(A) << endl << endl;
 
 	cout << "El vector de permutaciones es: ( ";
 	for(int i : perm) cout << i << ' ';
 		cout << ")" << endl << endl;
 
-	cout << "Det A = " << determinante(A) << endl << endl;
+	cout << "[ Estimación del error en la descomposicón PA = LU ]" << endl;
+	cout << "||PA - LU||_1 = " << norma_1(resta(calculo_PA(A, perm), producto(L, U))) << endl;
+	cout << "||PA - LU||_inf = " << norma_inf(resta(calculo_PA(A, perm), producto(L, U))) << endl << endl;
 
-	cout << "[Estimación del error en la resolución Ax = b]" << endl;
+	cout << "[ Estimación del error en la resolución Ax = b ]" << endl;
 	cout << "||Ax - b||_1 = " << norma_1_vector(r) << endl;
 	cout << "||Ax - b||_2 = " << norma_2_vector(r) << endl;
 	cout << "||Ax - b||_inf = " << norma_inf_vector(r) << endl;
 
 
-	////////////////////////////*** [ PROGRAMA ] ***/////////////////////////////
+	////////////////////////////*** [ END PROGRAMA ] ***/////////////////////////////
 
 
-	////*** [SALIDA DE DATOS] *** ////
+	////////////////////////////*** [SALIDA DE DATOS] ***////////////////////////////
 
 	ofstream Resultados;
 	Resultados.open(argv[2], ofstream::out);

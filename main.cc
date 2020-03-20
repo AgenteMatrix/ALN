@@ -10,6 +10,8 @@ int main(int argc, char *argv[]) {
 		exit(-1);
 	}
 
+	////*** [LECTURA DE DATOS] *** ////
+
 	ifstream Datos;
 	Datos.open(argv[1], ifstream::in);
 
@@ -18,9 +20,7 @@ int main(int argc, char *argv[]) {
 		exit(-1);
 	}
 
-	//LECTURA DE LOS DATOS
-
-	//n: dimensión de la matrix A (nxn) y de b (nx1).
+	//n: dimensión de la matriz A (nxn) y de b (nx1).
 	//m: número de componentes diferentes de 0 de la matriz A.
 	int n, m, i, j;
 	Datos >> n >> m;
@@ -36,6 +36,7 @@ int main(int argc, char *argv[]) {
 	Datos.close();
 
 	////////////////////////////*** [ PROGRAMA ] ***/////////////////////////////
+	
 
 	V x(n, 0);
 	x = resuelve(A, b);
@@ -67,8 +68,11 @@ int main(int argc, char *argv[]) {
 	cout << "||Ax - b||_2 = " << norma_2_vector(r) << endl;
 	cout << "||Ax - b||_inf = " << norma_inf_vector(r) << endl;
 
+
 	////////////////////////////*** [ PROGRAMA ] ***/////////////////////////////
 
+
+	////*** [SALIDA DE DATOS] *** ////
 
 	ofstream Resultados;
 	Resultados.open(argv[2], ofstream::out);

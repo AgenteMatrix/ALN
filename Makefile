@@ -5,14 +5,21 @@ all: exLU
 clean:
 	rm -f exLU *.o *.txt
 run:
-	./exLU M01.DAT output.txt
+	@read -r -p "Introduce archivo de datos: " data; \ 
+	./exLU data output.txt \
+
+list:
+	ls -l *.DAT
 
 help: 
-	@echo "'make all' para compilar "
-	@echo "'make clean' para eliminar los ficheros *.o *.txt"
-	@echo "'make run' para ejecutar el programa"
+	@echo "'make all' para compilar."
+	@echo "'make clean' para eliminar los ficheros *.o *.txt y el ejecutable."
+	@echo "'make list' para mostrar los archivos de datos del directorio."
+	@echo "'make run' para ejecutar el programa."
+
 exLU: main.o funciones.o
 	$(CXX) $^ -o $@
 
 main.o: main.cc funciones.h
+
 funciones.o: funciones.cc 

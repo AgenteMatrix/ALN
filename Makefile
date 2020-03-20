@@ -5,13 +5,15 @@ all: exLU
 clean:
 	rm -f exLU *.o *.txt
 run:
-	@read -r -p "Introduce archivo de datos: " data; \ 
-	./exLU data output.txt \
+	 @while [ -z "$$nombre" ]; do \
+		read -r -p "Introduce el nombre de los datos: " nombre; \
+	done; \
+	./exLU "$$nombre" output.txt
 
 list:
 	ls -l *.DAT
 
-help: 
+help:
 	@echo "'make all' para compilar."
 	@echo "'make clean' para eliminar los ficheros *.o *.txt y el ejecutable."
 	@echo "'make list' para mostrar los archivos de datos del directorio."
@@ -22,4 +24,4 @@ exLU: main.o funciones.o
 
 main.o: main.cc funciones.h
 
-funciones.o: funciones.cc 
+funciones.o: funciones.cc

@@ -24,6 +24,9 @@ int lu (M&A, VI& perm) {
 		Gauss(A, i);
 	}
 
+	//Debería poner esto?
+	//if(A[n-1][n-1] < tol) return 0;
+
 	return 2*((p+1)%2)-1;
 }
 
@@ -44,7 +47,7 @@ void Gauss (M& A, int fila) {
 int pivotage (M& A, int index) {
 	int n = A.size();
 	int res = -1;
-	double maximo = -1;
+	double maximo = -1.0;
 
 	for(int i = index; i < n; ++i) {
 
@@ -66,7 +69,7 @@ int pivotage (M& A, int index) {
 V resuelve (const M& A, const V& b) {
 	int n = A.size();
 
-	V x(n, 0);
+	V x(n, 0.0);
 	VI perm (n, 0);
 
 	M LU = A;
@@ -152,7 +155,7 @@ double determinante (const M& A) {
 //Dada una matriz A, calcula su traza.
 double traza (const M& A) {
 	int n = A.size();
-	double res = 0;
+	double res = 0.0;
 
 	for(int i = 0; i < n; ++i) res += A[i][i];
 
@@ -171,7 +174,7 @@ M producto (const M& A, const M& B) {
 		return A;
 	}
 
-	M res(n, V(q, 0));
+	M res(n, V(q, 0.0));
 
 	for(int i = 0; i < n; ++i) {
 		for(int j = 0; j < q; ++j) {
@@ -235,7 +238,7 @@ V suma_vectores (const V& u, const V& v) {
 		return u;
 	}
 
-	V res(n, 0);
+	V res(n, 0.0);
 	for(int i = 0; i < n; ++i) res[i] = u[i] + v[i];
 
 	return res;
@@ -253,7 +256,7 @@ V resta_vectores (const V& u, const V& v) {
 		return u;
 	}
 
-	V res(n, 0);
+	V res(n, 0.0);
 	for(int i = 0; i < n; ++i) res[i] = u[i] - v[i];
 
 	return res;
@@ -261,7 +264,7 @@ V resta_vectores (const V& u, const V& v) {
 
 //Dada una dimensión n, devuelve una matriz identidad de dim nxn.
 M identidad (int n) {
-	M res(n, V(n, 0));
+	M res(n, V(n, 0.0));
 	for(int i = 0; i < n; ++i) res[i][i] = 1.0;
 	return res;
 }
@@ -321,13 +324,13 @@ M calculo_PA (M& A, VI& perm) {
 M calculo_LU (M& A) {
 	int n = A.size();
 
-	M L(n, V(n, 0));
+	M L(n, V(n, 0.0));
 
 	for(int i = 0; i < n; ++i) {
 		for(int j = 0; j < n; ++j) {
 			if(j < i) {
 				L[i][j] = A[i][j];
-				A[i][j] = 0;
+				A[i][j] = 0.0;
 			}
 			if(i == j) L[i][j] = 1.0;
 		}
@@ -340,7 +343,7 @@ M calculo_LU (M& A) {
 
 double norma_1_vector (const V& b) {
 	int n = b.size();
-	double res = 0;
+	double res = 0.0;
 	
 	for(int i = 0; i < n; ++i) res += abs(b[i]);
 
@@ -349,7 +352,7 @@ double norma_1_vector (const V& b) {
 
 double norma_2_vector (const V& b) {
 	int n = b.size();
-	double res = 0;
+	double res = 0.0;
 
 	for(int i = 0; i < n; ++i) res += b[i]*b[i];
 
@@ -358,7 +361,7 @@ double norma_2_vector (const V& b) {
 
 double norma_inf_vector (const V& b) {
 	int n = b.size();
-	double maximo = 0;
+	double maximo = 0.0;
 	int index = 0;
 
 	for(int i = 0; i < n; ++i) {
@@ -376,10 +379,10 @@ double norma_inf_vector (const V& b) {
 double norma_1 (const M& A) {
 	int n = A.size();
 	int m = A[0].size();
-	double res = 0;
+	double res = 0.0;
 
 	for(int i = 0; i < n; ++i) {
-		double actual = 0;
+		double actual = 0.0;
 		for(int j = 0; j < m; ++j) actual += abs(A[j][i]);
 
 		res = max(res, actual);
@@ -391,7 +394,7 @@ double norma_1 (const M& A) {
 double norma_inf (const M& A) {
 	int n = A.size();
 	int m = A[0].size();
-	double res = 0;
+	double res = 0.0;
 
 	for(int i = 0; i < n; ++i) {
 		double actual = 0;

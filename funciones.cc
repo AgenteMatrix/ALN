@@ -19,7 +19,12 @@ int lu (M&A, VI& perm) {
 			++p;
 		}
 
-		if(abs(A[i][i]) < tol) return 0;
+		//Esta linea es necesaria para encontrar si la matriz es singular
+		//Pero sospecho que hace que el error de la descomposición sea muy grande
+		//¿Podría pasarlo como una variable booleana?
+		//También he notado que me falla el calculo del determinante
+		
+		//if(abs(A[i][i]) < tol) return 0;
 
 		Gauss(A, i);
 	}

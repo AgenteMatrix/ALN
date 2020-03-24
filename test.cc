@@ -17,9 +17,9 @@ int main() {
 		if(i < 10) {
 			string A = "./exLU M0" + number + B + "0" + number + C;
 			
-			cout << endl <<"-------------------------" << endl;
+			cout << endl <<"----------------------------" << endl;
 			cout << A << endl;
-			cout << "-------------------------" << endl;
+			cout << "----------------------------" << endl;
 
 			const char *command1 = A.c_str();
 			system(command1);
@@ -28,9 +28,9 @@ int main() {
 		else {
 			string A = "./exLU M" + number + B + number + C;
 
-			cout << endl <<"-------------------------" << endl;
+			cout << endl <<"----------------------------" << endl;
 			cout << A << endl;
-			cout << "-------------------------" << endl;
+			cout << "----------------------------" << endl;
 
 			const char *command2 = A.c_str();
 			system(command2);
@@ -46,9 +46,9 @@ int main() {
 
 		string A = "./exLU MSINGULAR0" + number + B + "SING0" + number + C;
 			
-			cout << endl <<"-------------------------" << endl;
+			cout << endl <<"----------------------------------------" << endl;
 			cout << A << endl;
-			cout << "-------------------------" << endl;
+			cout << "----------------------------------------" << endl;
 
 			const char *command1 = A.c_str();
 			system(command1);		

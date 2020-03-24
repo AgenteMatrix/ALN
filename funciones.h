@@ -5,7 +5,11 @@
 #include<vector>
 #include<fstream>	//Lee archivos de entrada, escribe archivos de salida
 #include<iomanip>	//Setprecision
-#include<math.h>	//Funciones matemáticas
+
+//Diferencia entre math.h y cmath? Cuál es mejor?
+//#include<math.h>	//Funciones matemáticas
+#include<cmath>		//Funciones matemáticas
+
 #include<cstdlib>	//Librería de utilidades
 
 using namespace std;

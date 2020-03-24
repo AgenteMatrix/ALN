@@ -1,9 +1,10 @@
-CXXFLAGS = -Wall -std=c++11 -O2
+CXXFLAGS = -Wall -std=c++11
 
-all: exLU
+all: exLU test.out
 
 clean:
-	rm -f exLU test *.o *.txt
+	rm -f exLU test.out *.o *.txt
+
 run:
 	 @while [ -z "$$nombre" ]; do \
 		read -r -p "Introduce el archivo de datos: " nombre; \
@@ -15,8 +16,7 @@ list:
 	@echo "Lista de ficheros: "; ls  *.DAT;
 
 test:
-	g++ -Wall test.cc -o test;
-	./test
+	./test.out
 
 help:
 	@echo "'make all' para compilar."
@@ -31,3 +31,8 @@ exLU: main.o funciones.o
 main.o: main.cc funciones.h
 
 funciones.o: funciones.cc
+
+test.out: test.o
+	$(CXX) $^ -o $@
+
+test.o: test.cc

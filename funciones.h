@@ -2,15 +2,11 @@
 #define funciones_h
 
 #include<iostream>
+#include<cstdlib>
 #include<vector>
 #include<fstream>	//Lee archivos de entrada, escribe archivos de salida
 #include<iomanip>	//Setprecision
-
-//Diferencia entre math.h y cmath? Cuál es mejor?
-//#include<math.h>	//Funciones matemáticas
 #include<cmath>		//Funciones matemáticas
-
-#include<cstdlib>	//Librería de utilidades
 
 using namespace std;
 
@@ -51,6 +47,11 @@ double norma_inf_vector (const V& b);
 
 double norma_1 (const M& A);
 double norma_inf (const M& A);
+
+////*** [ NÚMERO DE CONDICIÓN ] ***////
+
+double condicion_1 (const M& A);
+double condicion_inf (const M& A);
 
 ////*** [ IMPRESIÓN ] ***////
 

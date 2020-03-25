@@ -19,11 +19,11 @@ test:
 	./test.out
 
 help:
-	@echo "'make all' para compilar."
-	@echo "'make clean' para eliminar los ficheros *.o *.txt y el ejecutable."
-	@echo "'make list' para mostrar los archivos de datos del directorio."
-	@echo "'make run' para ejecutar el programa con una sola entrada de datos."
-	@echo "'make test' para ejecutar el programa con todas las entradas de datos."
+	@echo "'make all' 	para compilar."
+	@echo "'make clean' 	para eliminar los ficheros innecesarios"
+	@echo "'make list' 	para listar los archivos de datos del directorio."
+	@echo "'make run' 	para ejecutar el programa con una entrada de datos."
+	@echo "'make test' 	para ejecutar el programa con todas las entradas de datos."
 
 exLU: main.o funciones.o
 	$(CXX) $^ -o $@

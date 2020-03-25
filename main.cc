@@ -14,10 +14,10 @@ int main(int argc, char *argv[]) {
 
 	////////////////////////*** [ LECTURA DE DATOS ] ***////////////////////////
 
-	ifstream Datos;
-	Datos.open(argv[1], ifstream::in);
+	ifstream fileIN;
+	fileIN.open(argv[1], ifstream::in);
 
-	if(Datos.fail()) {
+	if(fileIN.fail()) {
 		cerr << endl << "------------------------------------------------" << endl;
 		cerr << "Error: no se ha podido abrir el fichero de datos" << endl;
 		cerr << "------------------------------------------------" << endl;
@@ -27,17 +27,17 @@ int main(int argc, char *argv[]) {
 	//n: dimensión de la matriz A (nxn) y de b (nx1).
 	//m: número de componentes diferentes de 0 de la matriz A.
 	int n, m, i, j;
-	Datos >> n >> m;
+	fileIN >> n >> m;
 
 	M A(n, V(n, 0));
 	V b(n, 0);
 
-	while(m--) Datos >> i >> j >> A[i][j];
+	while(m--) fileIN >> i >> j >> A[i][j];
 
-	Datos >> m;
-	while(m--) Datos >> i >> b[i];
+	fileIN >> m;
+	while(m--) fileIN >> i >> b[i];
 
-	Datos.close();
+	fileIN.close();
 
 	////////////////////////////*** [ BEGIN PROGRAMA ] ***/////////////////////////////
 
@@ -84,19 +84,19 @@ int main(int argc, char *argv[]) {
 
 	////////////////////////////*** [ SALIDA DE DATOS ] ***////////////////////////////
 
-	ofstream Resultados;
-	Resultados.open(argv[2], ofstream::out);
+	ofstream fileOUT;
+	fileOUT.open(argv[2], ofstream::out);
 
-	if(Resultados.fail()) {
+	if(fileOUT.fail()) {
 		cerr << endl << "----------------------------------------------------" << endl;
 		cerr << "Error: no se ha podido abrir el fichero de reultados" << endl;
 		cerr << "----------------------------------------------------" << endl;
 		exit(-1);
 	}
 
-	Resultados << scientific << setprecision(15);
+	fileOUT << scientific << setprecision(15);
 
-	for(int i = 0; i < n; ++i) Resultados << setw(4) << i << setw(24) << x[i] << endl;
+	for(int i = 0; i < n; ++i) fileOUT << setw(4) << i << setw(24) << x[i] << endl;
 
-	Resultados.close();
-}	
+	fileOUT.close();
+}

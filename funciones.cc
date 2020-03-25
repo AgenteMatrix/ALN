@@ -19,18 +19,14 @@ int lu (M&A, VI& perm) {
 			++p;
 		}
 
-		//Esta linea es necesaria para encontrar si la matriz es singular
-		//Pero sospecho que hace que el error de la descomposición sea muy grande
-		//¿Podría pasarlo como una variable booleana?
-		//También he notado que me falla el calculo del determinante
-		
-		//if(abs(A[i][i]) < tol) return 0;
+		//Atención
+		if(abs(A[i][i]) < tol) return 0;
 
 		Gauss(A, i);
 	}
 
-	//Debería poner esto?
-	//if(A[n-1][n-1] < tol) return 0;
+	//Atención
+	if(abs(A[n-1][n-1]) < tol) return 0;
 
 	return 2*((p+1)%2)-1;
 }
@@ -111,9 +107,9 @@ M inversa (const M& A) {
 	int n_singular = lu(LU, perm);
 
 	if(not n_singular) {
-		cerr << endl << "----------------------------------------------" << endl;
-		cerr << "Error: La matriz es singular, no tiene inversa." << endl;
-		cerr << "----------------------------------------------" << endl;
+		cerr << endl << "-------------------------------------------------------" << endl;
+		cerr << "Error inversa: La matriz es singular, no tiene inversa." << endl;
+		cerr << "-------------------------------------------------------" << endl;
 		return A;
 	}
 
@@ -409,6 +405,16 @@ double norma_inf (const M& A) {
 	}
 
 	return res;
+}
+
+////*** [ IMPRESIÓN ] ***////
+
+double condicion_1 (const M& A) {
+	return norma_1(A) * norma_1(A);
+}
+
+double condicion_inf (const M& A) {
+	return norma_inf(A) * norma_inf(A);
 }
 
 ////*** [ IMPRESIÓN ] ***////

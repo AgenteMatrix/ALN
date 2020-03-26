@@ -41,18 +41,27 @@ int main(int argc, char *argv[]) {
 
 	////////////////////////////*** [ BEGIN PROGRAMA ] ***/////////////////////////////
 
-	//Vector de soluciones x
-	V x(n, 0);
-	x = resuelve(A, b);
-
 	//Matriz de la descomposición LU y el vector de permutaciones.
 	M LU = A;
 	VI perm(n, 0);
-	lu(LU, perm);
+
+	//Si A singular, entonces paramos el programa.
+	if (not lu(LU, perm)) {
+		cerr << endl << string(78, '-') << endl;
+		cerr << "Matriz singular: No se puede llevar a cabo la descomposición LU adecuadamente." << endl;
+		cerr << string(78, '-') << endl;
+		//Atencińo: Se podría eliminar la siguiente linea y dejar que siguiera el programa.
+		//Los resultados tendrian un error elevado y serian poco de fiar.
+		return 0;
+	}
 
 	//Matriz U y L de la descomposición.
 	M U = LU;
 	M L = calculo_LU(U);
+
+	//Vector de soluciones x
+	V x(n, 0);
+	x = resuelve(A, b);
 
 	//Vector residuo.
 	V r(n, 0);

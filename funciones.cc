@@ -19,13 +19,11 @@ int lu (M&A, VI& perm) {
 			++p;
 		}
 
-		//Atención
 		if(abs(A[i][i]) < tol) return 0;
 
 		Gauss(A, i);
 	}
 
-	//Atención
 	if(abs(A[n-1][n-1]) < tol) return 0;
 
 	return 2*((p+1)%2)-1;

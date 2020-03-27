@@ -61,87 +61,87 @@ Este proyecto consta de las siguientes funciones, escritas como ya se ha indicad
 
 ### Transdormaciones y operaciones con V y M
 
-#### lu
+#### * lu
 
 Dada una matriz *A* y un vector de enteros *perm*, la función devuelve 0 si *A* es singular, 1 si se han realizado una cantidad par de permutaciones en la **descomposición LU** de *A*, y -1 si se han realizado una cantidad impar. Además, la matriz *A* acaba siendo expresada en su forma **LU** y el vector *perm* asaba siendo el vector de permutaciones. Estos dos parámetros están pasados por referencia.
 
-#### pivotage
+#### * pivotage
 
 Dada una matriz *A* y un *index* (variable entera), esta función realiza el **Pivotage parcial escalonado** y devuelve el i-ésimo pivote de *A*.
 
-#### Gauss
+#### * Gauss
 
 Dada una matriz *A* y un entero *fila*, realiza el i-éssimo paso del método de Gauss.
 
-#### resuelve
+#### * resuelve
 
 Dada una matriz *A* y un vector de términos independientes *b*, esta función devuelve el vector *x* de la resolución **Ax = b**.
 
-#### calculo_res
+#### * calculo_res
 
 Dada una matriz *A*, un vector de términos independientes *b* y un vector de soluciones *x*, devuelve **r = Ax - b**.
 
-#### calculo_PA
+#### * calculo_PA
 
 Dada una matriz *A* y un vector de permutaciones *perm*, devuelve la matriz resultante del producto **PA**.
 
-#### calculo_LU
+#### * calculo_LU
 
 Dada una matriz *A* en su descomposición **LU**, devuelve la matriz *L* de esta descomposición y la matriz *A*, que es pasada por referencia, la transforma en la matriz *U*.
 
-#### determinante
+#### * determinante
 
 Dada una matriz *A*, calcula su determinante mediante a la **descomposición LU**.
 
-#### traza
+#### * traza
 
 Dada una matriz *A*, calcula su traza.
 
-#### suma, resta, producto
+#### * suma, resta, producto
 
 Dadas dos matrices *A* y *B*, devuelven la matriz resultante de su suma, resta y producto respectivamente.
 
-#### suma_vectores, resta_vectores
+#### * suma_vectores, resta_vectores
 
 Dados dos vectores *v* y *u*, devuelven el vector resultante de su suma y resta respectivamente.
 
-#### inversa
+#### * inversa
 
 Dada una matriz *A*, devuelve su inversa (si es que tiene) haciendo uso de la función **resuelve**.
 
-#### transpuesta
+#### * transpuesta
 
 Dada una matriz *A*, devuelve su transpuesta.
 
-#### identidad
+#### * identidad
 
 Dada una dimensión *n*, devuelve una matriz identidad de dimensión *nxn*.
 
 ###  Normas vectores
 
-#### norma_1_vector, norma_2_vector, norma_inf_vector
+#### * norma_1_vector, norma_2_vector, norma_inf_vector
 
 Dado un vector *b*, devuelve su norma_1, norma_2 y norma_inf respectivamente.
 
 ### Normas matrices
 
-#### norma_1, norma_inf
+#### * norma_1, norma_inf
 
 Dada una matriz *A*, devuelve su norma_1 y norma_2 respectivamente.
 
 ### Número de condición
 
-#### condicion_1, condicion_inf
+#### * condicion_1, condicion_inf
 
 Dada una matriz *A*, devuelve su número de condición sub 1 y sub inf respectivamente.
 
 ### Impresión
 
-#### imprimir_matriz
+#### * imprimir_matriz
 
 Dada una matriz *A*, la escribe por terminal.
 
-#### imprimir_matlab
+#### * imprimir_matlab
 
 Dada una matriz *A*, la escribe por terminal de manera leíble para Matlab.
 

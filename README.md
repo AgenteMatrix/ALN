@@ -27,43 +27,37 @@ Para compilar, haz
 
 <tt>g++ main.cc funciones.h funciones.cc -o exLU</tt>
 
-Y para ejecutar el programa, siendo DATA.DAT el archivo de entrada y OUTPUT.txt el de salida, haz 
+Y para ejecutar el programa, siendo MXX.DAT el archivo de entrada y OUTPUT.txt el de salida, haz 
 
-<tt>./exLU DATA.DAT OUTPUT.txt </tt>
+<tt>./exLU MXX.DAT OUTPUT.txt </tt>
 
-Como este proyecto consta de un **Makefile**, el proceso anterior se puede simplificar mucho. Para compilar haz,
+El proceso anterior se puede simplificar mucho gracias al **Makefile**. Entonces para compilar. haz
 
-<tt>make all</tt>
+<tt>make all</tt> 
 
 Para ejecutar el programa haz,
 
-<tt>make test</tt>
+<tt>make test</tt> Y te pedirá el nombre de el fichero de datos de entrada. 
 
-Y te pedirá el nombre de el fichero de datos de entrada. El **Makefile** tiene otras funcionalidades como:
+En el **Makefile** se han programado otras funcionalidades como:
 
-<tt>make clean</tt>
+* <tt>make clean</tt> ~ Para eliminar los archivos creados al compilar y ejecutar el programa.
 
-Para eliminar los archivos creados al compilar y ejecutar el programa.
+* <tt>make list</tt> ~ Para mostrar la cantidad de ficheros de datos disponibles.
 
-<tt>make list</tt>
+* <tt>make test</tt> ~ Para ejecutar el programa con todas las entradas de datos disponibles. De esta forma también creeará un archivo de salida <tt>outputXX.txt</tt> para cada entrada de datos.
 
-Para que te muestre la cantidad de ficheros de datos posees y te los liste.
+Y finalmente
 
-<tt>make test</tt>
+* <tt>make help</tt> ~ Para que se muestre por terminal los posibles comandos 'make' que puedes llevar a cabo y una breve descripción de ellos.
 
-Para ejecutar el programa con todas las entradas de datos disponibles. Y finalmente
-
-<tt>make help</tt>
-
-Para que se te muestre por terminal los posibles comandos 'make' que puedes llevar a cabo y una breve descripción de ellos.
-
-Es importante saber que el programa hará lo que sea especificado en el **main.cc** y este está abierto a ser modificado. También cabe recalcar que se debe indicar manualmente en el archivo **test.cc** la cantidad de ficheros de datos se poseen y como es su estructura de nombre (en el estado actual solo se contempla la estructura M00.DAT y MSINGULAR00.DAT), y que si se quisiera usar sería necesario cambiarlo.
+Es importante saber que el programa hará lo que sea especificado en el **main.cc** y este está abierto a ser modificado. También cabe recalcar que se debe indicar manualmente en el archivo **test.cc** la cantidad de ficheros de datos se poseen y como es su estructura de nombre (en el estado actual solo se contempla la estructura <tt>MXX.DAT</tt> y <tt>MSINGULARXX.DAT</tt> con <tt>XX</tt> = 00, 01, ..., 99).
 
 ## Otras consideraciones
 
 ### Formato de los datos
 
-Es necesario que los ficheros de datos tengan un cierto formato para ser leídos correctamente. Lo primero que tiene que aparecer es la dimensión de la matriz (cuadrada) que tiene que coincidir con la del vector de términos independientes. A continuación se determinan los elementos diferentes de 0 de la matriz, después y precedido por su fila y columna los elementos diferentes de 0. A continuación se sigue el mismo procedimiento para el vector, primero la cantidad de elementos diferentes de 0, después fila, columna y el elemento diferente de 0.
+Es necesario que los ficheros de datos tengan un cierto formato para ser leídos correctamente. Lo primero que tiene que aparecer es la dimensión de la matriz (cuadrada) que tiene que coincidir con la del vector de términos independientes. A continuación se determinan los elementos diferentes de 0 de la matriz, después y precedido por su fila y columna los elementos diferentes de 0. A continuación se sigue el mismo procedimiento para el vector, primero la cantidad de elementos diferentes de 0, después fila, columna y el elemento diferente de 0. Todos los indices empiezan en 0.
 
 ### Decimales en la salida y tolerancia admitida
 

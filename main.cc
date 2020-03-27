@@ -7,7 +7,7 @@ int main(int argc, char *argv[]) {
 	if(argc < 3) {
 		cerr << endl << "-----------------------------------------------------------------------" << endl;
 		cerr << "Error: indica el fichero de los datos y el nombre del fichero de salida" << endl;
-		cerr << "Ejemplo de uso: ./main.exe DATA OUTPUT.txt" << endl;
+		cerr << "Ejemplo de uso: ./main.exe MXX.DAT OUTPUT.txt" << endl;
 		cerr << "-----------------------------------------------------------------------" << endl;
 		exit(-1);
 	}

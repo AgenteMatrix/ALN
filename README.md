@@ -23,7 +23,7 @@ Como ya se ha enseñado este proyecto esta separado en varios ficheros. El <tt>m
 
 ## Explicación de uso
 
-Primeor de todo es necesario descargar la carpeta de este proyecto y situarse a través de la consola en el directorio donde lo hayamos hecho. Recordamos que también es necerasio tener los ficheros de datos (que no constan en este proyecto) en el mismo directorio. Una vez hecho esto, entonces:
+Primero de todo es necesario descargar la carpeta de este proyecto y situarse a través de la consola en el directorio donde lo hayamos hecho. Recordamos que también es necesario tener los ficheros de datos (que no constan en este proyecto) en el mismo directorio. Una vez hecho esto, entonces:
 
 Para compilar, haz
 
@@ -47,37 +47,103 @@ En el **Makefile** se han programado otras funcionalidades como:
 
 * <tt>make list</tt> ~ Para mostrar la cantidad de ficheros de datos disponibles.
 
-* <tt>make test</tt> ~ Para ejecutar el programa con todas las entradas de datos disponibles. De esta forma también creeará un archivo de salida <tt>outputXX.txt</tt> para cada entrada de datos.
+* <tt>make test</tt> ~ Para ejecutar el programa con todas las entradas de datos disponibles. De esta forma también creara un archivo de salida <tt>outputXX.txt</tt> para cada entrada de datos.
 
 Y finalmente
 
 * <tt>make help</tt> ~ Para que se muestre por terminal los posibles comandos 'make' que puedes llevar a cabo y una breve descripción de ellos.
 
-Es importante saber que el programa hará lo que sea especificado en el <tt>main.cc</tt> y este está abierto a ser modificado. También cabe recalcar que se debe indicar manualmente en el archivo <tt>test.cc</tt> la cantidad de ficheros de datos se poseen y como es su estructura de nombre (en el estado actual solo se contempla la estructura <tt>MXX.DAT</tt> y <tt>MSINGULARXX.DAT</tt> con <tt>XX</tt> = (00, 01, ..., 99)).
+Es importante saber que el programa hará lo que sea especificado en el <tt>main.cc</tt> y este está abierto a ser modificado, indicando que funciones deben ser ejecutadas. También cabe recalcar que se debe indicar manualmente en el archivo <tt>test.cc</tt> la cantidad de ficheros de datos se poseen y como es su estructura de nombre (en el estado actual solo se contempla la estructura <tt>MXX.DAT</tt> y <tt>MSINGULARXX.DAT</tt> con <tt>XX</tt> = (00, 01, ..., 99)).
 
 ## Funciones
 
 Este proyecto consta de las siguientes funciones, escritas como ya se ha indicado en <tt>funciones.cc</tt>. Fijemonos que estas estan separadas en diferentes clases dentro del programa, en **Transformaciones y operaciones con V y M**, **Normas vectores**, **Normas matrices**, **Número de condición** e **Impresión**.
 
+### Transdormaciones y operaciones con V y M
+
 #### lu
+
+Dada una matriz *A* y un vector de enteros *perm*, la función devuelve 0 si *A* es singular, 1 si se han realizado una cantidad par de permutaciones en la **descomposición LU** de *A*, y -1 si se han realizado una cantidad impar. Además, la matriz *A* acaba siendo expresada en su forma **LU** y el vector *perm* asaba siendo el vector de permutaciones. Estos dos parámetros están pasados por referencia.
+
 #### pivotage
-#### resuelve
+
+Dada una matriz *A* y un *index* (variable entera), esta función realiza el **Pivotage parcial escalonado** y devuelve el i-ésimo pivote de *A*.
+
 #### Gauss
+
+Dada una matriz *A* y un entero *fila*, realiza el i-éssimo paso del método de Gauss.
+
+#### resuelve
+
+Dada una matriz *A* y un vector de términos independientes *b*, esta función devuelve el vector *x* de la resolución **Ax = b**.
+
 #### calculo_res
+
+Dada una matriz *A*, un vector de términos independientes *b* y un vector de soluciones *x*, devuelve **r = Ax - b**.
+
 #### calculo_PA
+
+Dada una matriz *A* y un vector de permutaciones *perm*, devuelve la matriz resultante del producto **PA**.
+
 #### calculo_LU
+
+Dada una matriz *A* en su descomposición **LU**, devuelve la matriz *L* de esta descomposición y la matriz *A*, que es pasada por referencia, la transforma en la matriz *U*.
+
 #### determinante
+
+Dada una matriz *A*, calcula su determinante mediante a la **descomposición LU**.
+
 #### traza
+
+Dada una matriz *A*, calcula su traza.
+
 #### suma, resta, producto
+
+Dadas dos matrices *A* y *B*, devuelven la matriz resultante de su suma, resta y producto respectivamente.
+
 #### suma_vectores, resta_vectores
+
+Dados dos vectores *v* y *u*, devuelven el vector resultante de su suma y resta respectivamente.
+
 #### inversa
+
+Dada una matriz *A*, devuelve su inversa (si es que tiene) haciendo uso de la función **resuelve**.
+
 #### transpuesta
+
+Dada una matriz *A*, devuelve su transpuesta.
+
 #### identidad
 
+Dada una dimensión *n*, devuelve una matriz identidad de dimensión *nxn*.
+
+###  Normas vectores
+
 #### norma_1_vector, norma_2_vector, norma_inf_vector
+
+Dado un vector *b*, devuelve su norma_1, norma_2 y norma_inf respectivamente.
+
+### Normas matrices
+
 #### norma_1, norma_inf
+
+Dada una matriz *A*, devuelve su norma_1 y norma_2 respectivamente.
+
+### Número de condición
+
 #### condicion_1, condicion_inf
-#### imprimir_matriz, imprimir_matlab
+
+Dada una matriz *A*, devuelve su número de condición sub 1 y sub inf respectivamente.
+
+### Impresión
+
+#### imprimir_matriz
+
+Dada una matriz *A*, la escribe por terminal.
+
+#### imprimir_matlab
+
+Dada una matriz *A*, la escribe por terminal de manera leíble para Matlab.
 
 ## Otras consideraciones
 

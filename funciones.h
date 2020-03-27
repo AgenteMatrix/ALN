@@ -23,8 +23,8 @@ const int decim = 15;
 
 int lu (M& A, VI& perm);
 int pivotage (M& A, int index);
-V resuelve (const M& A, const V& b);
 void Gauss (M& A, int fila);
+V resuelve (const M& A, const V& b);
 V calculo_res (M& A, V& x, V& b);
 M calculo_PA (M& A, VI& perm);
 M calculo_LU (M& A);

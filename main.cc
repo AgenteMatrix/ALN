@@ -68,7 +68,7 @@ int main(int argc, char *argv[]) {
 	r = calculo_res(A, x, b);
 
 	//OUTPUT.
-	cout << scientific << setprecision(15);
+	cout << scientific << setprecision(decim);
 
 	cout << endl << "Dim del sistema: " << n << endl << endl;
 
@@ -103,7 +103,7 @@ int main(int argc, char *argv[]) {
 		exit(-1);
 	}
 
-	fileOUT << scientific << setprecision(15);
+	fileOUT << scientific << setprecision(decim);
 
 	for(int i = 0; i < n; ++i) fileOUT << setw(4) << i << setw(24) << x[i] << endl;
 

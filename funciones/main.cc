@@ -52,6 +52,7 @@ int main(int argc, char *argv[]) {
 		cerr << string(78, '-') << endl;
 		//Atencińo: Se podría eliminar la siguiente linea y dejar que siguiera el programa.
 		//Los resultados tendrian un error elevado y serian poco de fiar.
+		//Pero si la matriz es "poco singular", los resultados son de fiar, como en MSINGULAR00.DAT
 		return 0;
 	}
 

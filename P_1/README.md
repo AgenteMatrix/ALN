@@ -61,15 +61,15 @@ Este proyecto consta de las siguientes funciones, escritas como ya se ha indicad
 
 ### Transformaciones y operaciones con V y M
 
-#### lu
+- **lu**
 
 Dada una matriz *A* y un vector de enteros *perm*, la función devuelve 0 si *A* es singular, 1 si se han realizado una cantidad par de permutaciones en la **descomposición LU** de *A*, y -1 si se han realizado una cantidad impar. Además, la matriz *A* acaba siendo expresada en su forma **LU** y el vector *perm* asaba siendo el vector de permutaciones. Estos dos parámetros están pasados por referencia.
 
-#### pivotage
+- **pivotage**
 
 Dada una matriz *A* y un *index* (variable entera), esta función realiza el **Pivotage parcial escalonado** y devuelve el i-ésimo pivote de *A*.
 
-#### Gauss
+- **Gauss**
 
 Dada una matriz *A* y un entero *fila*, realiza el i-éssimo paso del método de Gauss.
 

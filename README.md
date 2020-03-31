@@ -1,6 +1,6 @@
-# Repositorio de prácticas de la asignatura Álgebra Lineal Numérica.
+# Repositorio de prácticas de la asignatura Álgebra Lineal Numérica
 
-## FME ~ UPC
+## Facultad de Matemáticas y Estadística ~ Universidad Politécnica de Cataluña
 
 ## Eduardo Peña Royuela ~ 2020
 

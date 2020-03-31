@@ -44,7 +44,7 @@ int main(int argc, char *argv[]) {
 	//Matriz de la descomposición LU y el vector de permutaciones.
 	M LU = A;
 	VI perm(n, 0);
-
+	
 	//Si A singular, entonces paramos el programa.
 	if (not lu(LU, perm)) {
 		cerr << endl << string(86, '-') << endl;

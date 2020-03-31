@@ -47,13 +47,11 @@ int main(int argc, char *argv[]) {
 
 	//Si A singular, entonces paramos el programa.
 	if (not lu(LU, perm)) {
-		cerr << endl << string(78, '-') << endl;
-		cerr << "Matriz singular: No se puede llevar a cabo la descomposición LU adecuadamente." << endl;
-		cerr << string(78, '-') << endl;
-		//Atencińo: Se podría eliminar la siguiente linea y dejar que siguiera el programa.
-		//Los resultados tendrian un error elevado y serian poco de fiar.
-		//Pero si la matriz es "poco singular", los resultados son de fiar, como en MSINGULAR00.DAT
-		return 0;
+		cerr << endl << string(86, '-') << endl;
+		cerr << "Error! Matriz singular, no se puede llevar a cabo la descomposición LU adecuadamente." << endl;
+		cerr << string(86, '-') << endl;
+		//Atencińo: Se podría descomentar la siguiente linea y cortar el programa cuando la matriz es singular.
+		//return 0;
 	}
 
 	//Matriz U y L de la descomposición.

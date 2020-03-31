@@ -1,4 +1,4 @@
-# Repositorio de prácticas de la asignatura Álgebra Lineal Numérica.
+# Repositorio de prácticas de la asignatura Álgebra Lineal Numérica
 
 ## Facultad de Matemáticas y Estadística ~ Universidad Politécnica de Cataluña
 

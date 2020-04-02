@@ -23,7 +23,7 @@ Como ya se ha enseñado este proyecto esta separado en varios ficheros. El <tt>m
 
 ## Explicación de uso
 
-Primero de todo es necesario descargar la carpeta de este proyecto y situarse a través de la consola en el directorio donde lo hayamos hecho. Recordamos que también es necesario tener los ficheros de datos (que no constan en este proyecto) en el mismo directorio. Una vez hecho esto, entonces:
+Primero de todo es necesario descargar la carpeta de este proyecto y situarse a través de la consola en el directorio donde lo hayamos hecho. Recordamos que también es necesario tener los ficheros de datos (que no constan en este repositorio) en el mismo directorio. Una vez hecho esto, entonces:
 
 Para compilar, haz
 

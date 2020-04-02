@@ -133,7 +133,7 @@ Dada una matriz *A*, devuelve su norma_1 y norma_2 respectivamente.
 
 - **condicion_1, condicion_inf**
 
-Dada una matriz *A*, devuelve su número de condición sub 1 y sub inf respectivamente.
+Dada una matriz *A*, devuelve su número de condición sub 1 y sub inf respectivamente. Si la matriz *A* es singular, entonces devuelve 0 y un mensaje de error indicando que el número de condición es *infinito*.
 
 ### Impresión
 

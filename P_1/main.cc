@@ -53,7 +53,7 @@ int main(int argc, char *argv[]) {
 		//Atencińo: Se podría descomentar la siguiente linea y cortar el programa cuando la matriz es singular.
 		//return 0;
 	}
-
+	
 	//Matriz U y L de la descomposición.
 	M U = LU;
 	M L = calculo_LU(U);

@@ -405,14 +405,38 @@ double norma_inf (const M& A) {
 	return res;
 }
 
-////*** [ IMPRESIÓN ] ***////
+////*** [ NÚMERO DE CONDICIÓN ] ***////
 
+//Dada una matriz A, devuelve su número de condición_1 y si es singular devuelve 0 y un mensaje de error.
 double condicion_1 (const M& A) {
-	return norma_1(A) * norma_1(A);
+	int n = A.size();
+	M LU = A;
+	VI perm(n, 0);
+
+	if(not lu(LU, perm)) {
+		cerr << endl << "-----------------------------------------------------------------" << endl;
+		cerr << "Error condicion_1: matriz singular, número de condición infinito." << endl;
+		cerr << "-----------------------------------------------------------------" << endl;
+		return 0;
+	}
+
+	return norma_1(A) * norma_1(inversa(A));
 }
 
+//Dada una matriz A, devuelve su número de condición_inf y si es singular devuelve 0 y un mensaje de error.
 double condicion_inf (const M& A) {
-	return norma_inf(A) * norma_inf(A);
+	int n = A.size();
+	M LU = A;
+	VI perm(n, 0);
+
+	if(not lu(LU, perm)) {
+		cerr << endl << "-------------------------------------------------------------------" << endl;
+		cerr << "Error condicion_inf: matriz singular, número de condición infinito." << endl;
+		cerr << "-------------------------------------------------------------------" << endl;
+		return 0;
+	}
+
+	return norma_inf(A) * norma_inf(inversa(A));
 }
 
 ////*** [ IMPRESIÓN ] ***////

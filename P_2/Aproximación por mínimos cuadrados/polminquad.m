@@ -2,6 +2,10 @@
 
 function [coefs, norm2Res] = polminquad(x, y, grau, plt)
 
+    fprintf('\n');
+    fprintf('<strong>Aproximación polinomial por mínimos cuadrados </strong>\n')
+    n = length(x);
+
     % Establecemos un formato.
     format longE;
 
@@ -10,25 +14,41 @@ function [coefs, norm2Res] = polminquad(x, y, grau, plt)
     y = y(:);
 
     % Construimos la matriz de Vandermonde associada a x.
-    if length(x) <= grau
+    if n <= grau
         error('Grado del polinomio inválido.')
     else
-        A = vander(x);
+
+        % La matriz A para las ecuaciones normales es inicializada.
+        A = zeros(n, grau + 1);
+
+        % Generamos una matriz de Vandermonde con los valores de x.
+        for i = 1:n
+            aux = 1.0;
+            for j = grau + 1:-1:1
+                A(i, j) = aux;
+               aux = aux*x(i);
+            end
+        end
+
     end
 
     % Descomposición A = QR.
     [Q, R] = desQR(A,grau);
 
     % Comprovación de que Q és ortogonal.
-    norma_residu = norm(transpose(Q)*Q - eye(grau + 1), inf);
-    fprintf('\n');
+    norma_residu = norm(Q'*Q - eye(grau + 1), inf);
     fprintf("Estimación del error de ||Q^tQ - I||_inf: %g\n", norma_residu)
 
     % Solución del sistema triangular.
     opts.UT = true;
-    coefs = linsolve(R, transpose(Q)*y, opts);
+    coefs = linsolve(R, Q'*y, opts);
     norm2Res = norm(A*coefs - y);
     fprintf("Estimación del error de ||Aa - y||_2: %g\n", norm2Res)
+    
+    % Quehaceres estéticos.
+    fprintf("Coeficientes del polinomio:\n\n")
+    fprintf("Coefs = \n\n")
+    disp(coefs)
 
     % Mostramos un gráfico si plt = 1.
     if (plt == 1)

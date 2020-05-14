@@ -1,6 +1,6 @@
 % Función que itera los métodos iterativos de Gauss-Seidel, Jacobi y Sobrerelajación.
 
-function [x, res, iter] = iterar(A,b,B, c, x0, nmax, prec)
+function [x, iter] = iterar(A,b,B, c, x0, nmax, prec)
 
 % Calculamos la norma inicial de ||b + Ax0||_2.
 x = x0(:);

@@ -17,7 +17,7 @@ using M = vector<V>;
 ////*** [ Tolerancia ] ****////
 const double tol = 1e-12;
 ////*** [ Decimales ] ****////
-const int decim = 15;
+const int decim = 16;
 
 ////*** [ TRANSFORMACIONES Y OPERACIONES CON V Y M ] ***////
 
